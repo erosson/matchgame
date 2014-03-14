@@ -1,0 +1,103 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class Grid : MonoBehaviour {
+	public int width = 10;
+	public int height = 10;
+	public int minMatch = 3;
+	public GameObject[] blockPrefabs;
+
+	private Dictionary<IntVector2, Block> blockDict = new Dictionary<IntVector2, Block>();
+
+	private T RandomElement<T>(T[] elements) {
+		return elements[Random.Range(0, elements.Length)];
+	}
+
+	// Use this for initialization
+	void Start() {
+		for (int x=0; x < width; x++) {
+			for (int y=0; y < height; y++) {
+				var template = RandomElement(blockPrefabs);
+				var blockObject = Instantiate(template, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
+				var location = IntVector2.FromVector(blockObject.transform.position);
+				var block = blockObject.GetComponent<Block>();
+				blockObject.transform.parent = transform;
+				block.DropEvent += OnDrop;
+				blockDict[location] = block;
+			}
+		}
+	}
+
+	private void OnDrop(Block block, IntVector2 start, IntVector2 end) {
+		var diff = end - start;
+		Debug.Log ("ondrop" + diff + end);
+		var starts = new HashSet<IntVector2>();
+		if (diff.X != 0) {
+			// assert diff.Y == 0;
+			for (int x=0; x < width; x++) {
+				starts.Add(new IntVector2(x, block.Position.Y));
+			}
+		}
+		else if (diff.Y != 0) {
+			for (int y=0; y < height; y++) {
+				starts.Add(new IntVector2(block.Position.X, y));
+			}
+		}
+
+		var moved = new HashSet<Block>();
+		foreach (var startLoc in starts) {
+			var endLoc = new IntVector2((startLoc.X + diff.X + width) % width, (startLoc.Y + diff.Y + height) % height);
+			var b = blockDict[startLoc];
+			moved.Add(b);
+			blockDict.Remove(startLoc);
+			b.Position = endLoc;
+		}
+		foreach (Block b in moved) {
+			blockDict.Add(b.Position, b);
+		}
+
+		var matches = FindMatches(moved);
+		Debug.Log ("#matches: " + matches.Count);
+		foreach (var match in matches) {
+			Debug.Log(match + ";" + match.Position);
+		}
+	}
+
+	private HashSet<Block> FindMatches(HashSet<Block> blocks) {
+		// unity, why you no support .net 4, with collection.sum()
+		var ret = new HashSet<Block>();
+		foreach (var block in blocks) {
+			ret.UnionWith(FindMatches(block));
+		}
+		return ret;
+	}
+
+	private HashSet<Block> FindMatches(Block block) {
+		var ret = new HashSet<Block>();
+		ret.UnionWith(FindMatches(block, new IntVector2(1, 0)));
+		ret.UnionWith(FindMatches(block, new IntVector2(0, 1)));
+		return ret;
+	}
+
+	private HashSet<Block> FindMatches(Block block, IntVector2 direction) {
+		var matches = new HashSet<Block>();
+		matches.Add(block);
+		var dirs = new IntVector2[]{direction, -direction};
+		foreach (IntVector2 dir in dirs) {
+			var pos = block.Position + dir;
+			while (IsInBounds(pos) && block.IsMatching(blockDict[pos])) {
+				matches.Add(blockDict[pos]);
+				pos += dir;
+			}
+		}
+		if (matches.Count < minMatch) {
+			matches.Clear();
+		}
+		return matches;
+	}
+
+	private bool IsInBounds(IntVector2 point) {
+		return point.X >= 0 && point.X < width && point.Y >= 0 && point.Y < height;
+	}
+}
