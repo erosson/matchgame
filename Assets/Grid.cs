@@ -7,7 +7,11 @@ public class Grid : MonoBehaviour {
 	public int height = 10;
 	public int minMatch = 3;
 	public GameObject[] blockPrefabs;
-
+	
+	public delegate void MatchEventHandler(HashSet<Block> blocks);
+	public event MatchEventHandler MatchEvent = delegate {};
+	public event MatchEventHandler ClearEvent = delegate {};
+	
 	private Dictionary<IntVector2, Block> blockDict = new Dictionary<IntVector2, Block>();
 
 	private T RandomElement<T>(T[] elements) {
@@ -16,17 +20,30 @@ public class Grid : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
+		MatchEvent += matches => StartCoroutine(OnMatch(matches));
+		ClearEvent += matches => StartCoroutine(OnClear(matches));
+
+		var blocks = new HashSet<Block>();
 		for (int x=0; x < width; x++) {
 			for (int y=0; y < height; y++) {
-				var template = RandomElement(blockPrefabs);
-				var blockObject = Instantiate(template, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
-				var location = IntVector2.FromVector(blockObject.transform.position);
-				var block = blockObject.GetComponent<Block>();
-				blockObject.transform.parent = transform;
-				block.DropEvent += OnDrop;
-				blockDict[location] = block;
+				blocks.Add(CreateRandomBlock(x, y));
 			}
 		}
+		FindAndClearMatches(blocks);
+	}
+
+	private Block CreateRandomBlock(IntVector2 position) {
+		return CreateRandomBlock(position.X, position.Y);
+	}
+	private Block CreateRandomBlock(int x, int y) {
+		var template = RandomElement(blockPrefabs);
+		var blockObject = Instantiate(template, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
+		var location = IntVector2.FromVector(blockObject.transform.position);
+		var block = blockObject.GetComponent<Block>();
+		blockObject.transform.parent = transform;
+		block.DropEvent += OnDrop;
+		blockDict[location] = block;
+		return block;
 	}
 
 	private void OnDrop(Block block, IntVector2 start, IntVector2 end) {
@@ -57,11 +74,41 @@ public class Grid : MonoBehaviour {
 			blockDict.Add(b.Position, b);
 		}
 
-		var matches = FindMatches(moved);
-		Debug.Log ("#matches: " + matches.Count);
-		foreach (var match in matches) {
-			Debug.Log(match + ";" + match.Position);
+		FindAndClearMatches(moved);
+	}
+
+	private void FindAndClearMatches(HashSet<Block> blocks) {
+		var matches = FindMatches(blocks);
+		if (matches.Count > 0) {
+			MatchEvent(matches);
 		}
+	}
+
+	private IEnumerator OnMatch(HashSet<Block> matches) {
+		foreach (var match in matches) {
+			match.GetComponent<Animator>().SetTrigger("Match");
+			match.IsMatchable = false;
+		}
+		yield return new WaitForSeconds(1.0f);
+		ClearEvent(matches);
+	}
+
+	private IEnumerator OnClear(HashSet<Block> matches) {
+		// clear matched blocks
+		foreach (var match in matches) {
+			var dictval = blockDict[match.Position];
+			DebugUtil.Assert(dictval == match, "cleared block's location in the blockdict is wrong");
+			blockDict.Remove(match.Position);
+			DestroyObject(match.gameObject);
+		}
+		// gravity. TODO
+		// For now, just fill in the cleared blocks
+		var newblocks = new HashSet<Block>();
+		foreach (var match in matches) {
+			newblocks.Add(CreateRandomBlock(match.Position));
+		}
+		FindAndClearMatches(newblocks);
+		yield return null;
 	}
 
 	private HashSet<Block> FindMatches(HashSet<Block> blocks) {
