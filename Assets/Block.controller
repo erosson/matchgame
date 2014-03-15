@@ -14,27 +14,10 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: BlockType
-    m_Type: 3
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
     m_StateMachine: {fileID: 110700000}
-    m_Mask: {fileID: 0}
-    m_BlendingMode: 0
-    m_SyncedLayerIndex: -1
-    m_StateMachineMotionSetIndex: 0
-    m_DefaultWeight: 0
-    m_IKPass: 0
-    m_SyncedLayerAffectsTiming: 0
-    m_Controller: {fileID: 9100000}
-  - serializedVersion: 3
-    m_Name: Block Type
-    m_StateMachine: {fileID: 110785741}
     m_Mask: {fileID: 0}
     m_BlendingMode: 0
     m_SyncedLayerIndex: -1
@@ -49,12 +32,12 @@ Transition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_SrcState: {fileID: 110292771}
+  m_SrcState: {fileID: 0}
   m_DstState: {fileID: 110200000}
   m_TransitionDuration: .100000001
   m_TransitionOffset: 0
   m_Conditions:
-  - m_ConditionMode: 2
+  - m_ConditionMode: 1
     m_ConditionEvent: Match
     m_EventTreshold: 0
     m_ExitTime: .899999976
@@ -76,7 +59,7 @@ Transition:
     m_ConditionEvent: Match
     m_EventTreshold: 0
     m_ExitTime: .899999976
-  m_Atomic: 1
+  m_Atomic: 0
   m_Solo: 0
   m_Mute: 0
 --- !u!1101 &110196460
@@ -91,10 +74,10 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: Match
+    m_ConditionEvent: MatchXX
     m_EventTreshold: 0
-    m_ExitTime: .899999976
-  m_Atomic: 1
+    m_ExitTime: 10
+  m_Atomic: 0
   m_Solo: 0
   m_Mute: 0
 --- !u!1102 &110200000
@@ -108,7 +91,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 6a39b88dd4c533445ab851e0cdad342b, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 24, y: 36, z: 0}
+  m_Position: {x: 396, y: 216, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -123,7 +106,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 7120cb0751979d34e89382268a5e4fc0, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: -108, y: -84, z: 0}
+  m_Position: {x: 252, y: 96, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -138,7 +121,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 6959c70e2997b2c45a3681b7a04abe0b, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: -108, y: 180, z: 0}
+  m_Position: {x: 252, y: 360, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -151,9 +134,9 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 0}
+  - {fileID: 7400000, guid: e1a0734ef5b6279479bfd87bd7f8d02c, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: -252, y: 36, z: 0}
+  m_Position: {x: 108, y: 216, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -164,11 +147,10 @@ StateMachine:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Base Layer
-  m_DefaultState: {fileID: 110292771}
+  m_DefaultState: {fileID: 110201257}
   m_States:
   - {fileID: 110292771}
   - {fileID: 110200000}
-  - {fileID: 110205548}
   - {fileID: 110201257}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
@@ -178,31 +160,18 @@ StateMachine:
       second:
       - {fileID: 110164342}
     data:
-      first: {fileID: 110205548}
+      first: {fileID: 0}
       second: []
     data:
       first: {fileID: 110200000}
-      second:
-      - {fileID: 110196460}
+      second: []
     data:
       first: {fileID: 110292771}
+      second: []
+    data:
+      first: {fileID: 0}
       second:
       - {fileID: 110100000}
   m_MotionSetCount: 1
-  m_AnyStatePosition: {x: 168, y: -72, z: 0}
-  m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
---- !u!1107 &110785741
-StateMachine:
-  serializedVersion: 2
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Block Type
-  m_DefaultState: {fileID: 0}
-  m_States: []
-  m_ChildStateMachine: []
-  m_ChildStateMachinePosition: []
-  m_OrderedTransitions: {}
-  m_MotionSetCount: 1
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
+  m_AnyStatePosition: {x: 540, y: 108, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

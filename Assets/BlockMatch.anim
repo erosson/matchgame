@@ -18,97 +18,242 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .000166666665
+      - time: 0
         value: 1
-        inSlope: -3.00300288
-        outSlope: -3.00300288
+        inSlope: -6
+        outSlope: -6
+        tangentMode: 10
+      - time: .0833333358
+        value: .5
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       - time: .166666672
+        value: 1
+        inSlope: -2.38418579e-07
+        outSlope: -2.38418579e-07
+        tangentMode: 10
+      - time: .25
         value: .5
-        inSlope: -.001501441
-        outSlope: -.001501441
+        inSlope: -4.76837158e-07
+        outSlope: -4.76837158e-07
         tangentMode: 10
       - time: .333333343
         value: 1
-        inSlope: 3
-        outSlope: 3
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .416666657
+        value: .5
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .5
+        value: 1
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .583333313
+        value: .5
+        inSlope: -2.14576721e-06
+        outSlope: -2.14576721e-06
+        tangentMode: 10
+      - time: .666666687
+        value: 1
+        inSlope: -2.14576721e-06
+        outSlope: -2.14576721e-06
+        tangentMode: 10
+      - time: .75
+        value: .5
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .833333313
+        value: 1
+        inSlope: 2.14576721e-06
+        outSlope: 2.14576721e-06
+        tangentMode: 10
+      - time: .916666687
+        value: .5
+        inSlope: 2.14576721e-06
+        outSlope: 2.14576721e-06
+        tangentMode: 10
+      - time: 1
+        value: 1
+        inSlope: 6.00000143
+        outSlope: 6.00000143
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_Color.r
-    path: Block 6
+    path: DynamicSprite
     classID: 212
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .000166666665
+      - time: 0
         value: 1
-        inSlope: -3.00300288
-        outSlope: -3.00300288
+        inSlope: -6
+        outSlope: -6
+        tangentMode: 10
+      - time: .0833333358
+        value: .5
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       - time: .166666672
+        value: 1
+        inSlope: -2.38418579e-07
+        outSlope: -2.38418579e-07
+        tangentMode: 10
+      - time: .25
         value: .5
-        inSlope: -.001501441
-        outSlope: -.001501441
+        inSlope: -4.76837158e-07
+        outSlope: -4.76837158e-07
         tangentMode: 10
       - time: .333333343
         value: 1
-        inSlope: 3
-        outSlope: 3
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .416666657
+        value: .5
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .5
+        value: 1
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .583333313
+        value: .5
+        inSlope: -2.14576721e-06
+        outSlope: -2.14576721e-06
+        tangentMode: 10
+      - time: .666666687
+        value: 1
+        inSlope: -2.14576721e-06
+        outSlope: -2.14576721e-06
+        tangentMode: 10
+      - time: .75
+        value: .5
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .833333313
+        value: 1
+        inSlope: 2.14576721e-06
+        outSlope: 2.14576721e-06
+        tangentMode: 10
+      - time: .916666687
+        value: .5
+        inSlope: 2.14576721e-06
+        outSlope: 2.14576721e-06
+        tangentMode: 10
+      - time: 1
+        value: 1
+        inSlope: 6.00000143
+        outSlope: 6.00000143
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_Color.g
-    path: Block 6
+    path: DynamicSprite
     classID: 212
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .000166666665
+      - time: 0
         value: 1
-        inSlope: -3.00300288
-        outSlope: -3.00300288
+        inSlope: -6
+        outSlope: -6
+        tangentMode: 10
+      - time: .0833333358
+        value: .5
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       - time: .166666672
+        value: 1
+        inSlope: -2.38418579e-07
+        outSlope: -2.38418579e-07
+        tangentMode: 10
+      - time: .25
         value: .5
-        inSlope: -.001501441
-        outSlope: -.001501441
+        inSlope: -4.76837158e-07
+        outSlope: -4.76837158e-07
         tangentMode: 10
       - time: .333333343
         value: 1
-        inSlope: 3
-        outSlope: 3
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .416666657
+        value: .5
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .5
+        value: 1
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .583333313
+        value: .5
+        inSlope: -2.14576721e-06
+        outSlope: -2.14576721e-06
+        tangentMode: 10
+      - time: .666666687
+        value: 1
+        inSlope: -2.14576721e-06
+        outSlope: -2.14576721e-06
+        tangentMode: 10
+      - time: .75
+        value: .5
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .833333313
+        value: 1
+        inSlope: 2.14576721e-06
+        outSlope: 2.14576721e-06
+        tangentMode: 10
+      - time: .916666687
+        value: .5
+        inSlope: 2.14576721e-06
+        outSlope: 2.14576721e-06
+        tangentMode: 10
+      - time: 1
+        value: 1
+        inSlope: 6.00000143
+        outSlope: 6.00000143
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_Color.b
-    path: Block 6
+    path: DynamicSprite
     classID: 212
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .000166666665
+      - time: 0
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: -1
+        outSlope: -1
         tangentMode: 10
-      - time: .166666672
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: .333333343
-        value: 1
-        inSlope: 0
-        outSlope: 0
+      - time: 1
+        value: 0
+        inSlope: -1
+        outSlope: -1
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_Color.a
-    path: Block 6
+    path: DynamicSprite
     classID: 212
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -120,7 +265,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .333333343
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -138,97 +283,242 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .000166666665
+      - time: 0
         value: 1
-        inSlope: -3.00300288
-        outSlope: -3.00300288
+        inSlope: -6
+        outSlope: -6
+        tangentMode: 10
+      - time: .0833333358
+        value: .5
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       - time: .166666672
+        value: 1
+        inSlope: -2.38418579e-07
+        outSlope: -2.38418579e-07
+        tangentMode: 10
+      - time: .25
         value: .5
-        inSlope: -.001501441
-        outSlope: -.001501441
+        inSlope: -4.76837158e-07
+        outSlope: -4.76837158e-07
         tangentMode: 10
       - time: .333333343
         value: 1
-        inSlope: 3
-        outSlope: 3
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .416666657
+        value: .5
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .5
+        value: 1
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .583333313
+        value: .5
+        inSlope: -2.14576721e-06
+        outSlope: -2.14576721e-06
+        tangentMode: 10
+      - time: .666666687
+        value: 1
+        inSlope: -2.14576721e-06
+        outSlope: -2.14576721e-06
+        tangentMode: 10
+      - time: .75
+        value: .5
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .833333313
+        value: 1
+        inSlope: 2.14576721e-06
+        outSlope: 2.14576721e-06
+        tangentMode: 10
+      - time: .916666687
+        value: .5
+        inSlope: 2.14576721e-06
+        outSlope: 2.14576721e-06
+        tangentMode: 10
+      - time: 1
+        value: 1
+        inSlope: 6.00000143
+        outSlope: 6.00000143
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_Color.r
-    path: Block 6
+    path: DynamicSprite
     classID: 212
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .000166666665
+      - time: 0
         value: 1
-        inSlope: -3.00300288
-        outSlope: -3.00300288
+        inSlope: -6
+        outSlope: -6
+        tangentMode: 10
+      - time: .0833333358
+        value: .5
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       - time: .166666672
+        value: 1
+        inSlope: -2.38418579e-07
+        outSlope: -2.38418579e-07
+        tangentMode: 10
+      - time: .25
         value: .5
-        inSlope: -.001501441
-        outSlope: -.001501441
+        inSlope: -4.76837158e-07
+        outSlope: -4.76837158e-07
         tangentMode: 10
       - time: .333333343
         value: 1
-        inSlope: 3
-        outSlope: 3
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .416666657
+        value: .5
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .5
+        value: 1
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .583333313
+        value: .5
+        inSlope: -2.14576721e-06
+        outSlope: -2.14576721e-06
+        tangentMode: 10
+      - time: .666666687
+        value: 1
+        inSlope: -2.14576721e-06
+        outSlope: -2.14576721e-06
+        tangentMode: 10
+      - time: .75
+        value: .5
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .833333313
+        value: 1
+        inSlope: 2.14576721e-06
+        outSlope: 2.14576721e-06
+        tangentMode: 10
+      - time: .916666687
+        value: .5
+        inSlope: 2.14576721e-06
+        outSlope: 2.14576721e-06
+        tangentMode: 10
+      - time: 1
+        value: 1
+        inSlope: 6.00000143
+        outSlope: 6.00000143
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_Color.g
-    path: Block 6
+    path: DynamicSprite
     classID: 212
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .000166666665
+      - time: 0
         value: 1
-        inSlope: -3.00300288
-        outSlope: -3.00300288
+        inSlope: -6
+        outSlope: -6
+        tangentMode: 10
+      - time: .0833333358
+        value: .5
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       - time: .166666672
+        value: 1
+        inSlope: -2.38418579e-07
+        outSlope: -2.38418579e-07
+        tangentMode: 10
+      - time: .25
         value: .5
-        inSlope: -.001501441
-        outSlope: -.001501441
+        inSlope: -4.76837158e-07
+        outSlope: -4.76837158e-07
         tangentMode: 10
       - time: .333333343
         value: 1
-        inSlope: 3
-        outSlope: 3
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .416666657
+        value: .5
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .5
+        value: 1
+        inSlope: -9.53674316e-07
+        outSlope: -9.53674316e-07
+        tangentMode: 10
+      - time: .583333313
+        value: .5
+        inSlope: -2.14576721e-06
+        outSlope: -2.14576721e-06
+        tangentMode: 10
+      - time: .666666687
+        value: 1
+        inSlope: -2.14576721e-06
+        outSlope: -2.14576721e-06
+        tangentMode: 10
+      - time: .75
+        value: .5
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .833333313
+        value: 1
+        inSlope: 2.14576721e-06
+        outSlope: 2.14576721e-06
+        tangentMode: 10
+      - time: .916666687
+        value: .5
+        inSlope: 2.14576721e-06
+        outSlope: 2.14576721e-06
+        tangentMode: 10
+      - time: 1
+        value: 1
+        inSlope: 6.00000143
+        outSlope: 6.00000143
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_Color.b
-    path: Block 6
+    path: DynamicSprite
     classID: 212
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .000166666665
+      - time: 0
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: -1
+        outSlope: -1
         tangentMode: 10
-      - time: .166666672
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: .333333343
-        value: 1
-        inSlope: 0
-        outSlope: 0
+      - time: 1
+        value: 0
+        inSlope: -1
+        outSlope: -1
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_Color.a
-    path: Block 6
+    path: DynamicSprite
     classID: 212
     script: {fileID: 0}
   m_EulerEditorCurves: []

@@ -86,6 +86,7 @@ public class Grid : MonoBehaviour {
 
 	private IEnumerator OnMatch(HashSet<Block> matches) {
 		foreach (var match in matches) {
+			Debug.Log ("triggeran");
 			match.GetComponent<Animator>().SetTrigger("Match");
 			match.IsMatchable = false;
 		}
