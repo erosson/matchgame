@@ -18,3 +18,7 @@
 /build/
 
 /ProjectSettings/Physics2DSettings.asset
+/ProjectSettings/EditorBuildSettings.asset
+/ProjectSettings/ProjectSettings.asset
+
+/*.apk
