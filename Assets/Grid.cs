@@ -85,6 +85,7 @@ public class Grid : MonoBehaviour {
 	private IEnumerator OnMatch(HashSet<Block> matches) {
 		foreach (var match in matches) {
 			match.GetComponent<Animator>().SetTrigger("Match");
+			// Allowing the dragging block to match is dangerous, because it'll disappear while we're dragging it
 			DebugUtil.Assert(
 				match.state != Block.State.Dragging,
 			    "match contains the dragging block - but per the definition of IsMatchable, that's impossible!");
