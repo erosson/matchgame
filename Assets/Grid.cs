@@ -29,7 +29,20 @@ public class Grid : MonoBehaviour {
 				blocks.Add(CreateRandomBlock(x, y));
 			}
 		}
-		FindAndClearMatches(blocks);
+
+		// Find and replace matches without awarding score.
+		HashSet<Block> pregameMatches;
+		HashSet<Block> matchChecks = blocks;
+		long iterations = 0;
+		while ((pregameMatches = FindMatches(matchChecks)).Count > 0) {
+			iterations += 1;
+			matchChecks = new HashSet<Block>();
+			foreach (var match in pregameMatches) {
+				ClearBlock(match);
+				matchChecks.Add(CreateRandomBlock(match.Position));
+			}
+		}
+		Debug.Log("iterations required for a match-free start: " + iterations);
 	}
 
 	private Block CreateRandomBlock(int x, int y) {
@@ -95,13 +108,17 @@ public class Grid : MonoBehaviour {
 		ClearEvent(matches);
 	}
 
+	private void ClearBlock(Block block) {
+		DebugUtil.Assert(blockDict[block.Position] == block, 
+		                 "cleared block's location in the blockdict is wrong");
+		blockDict.Remove(block.Position);
+		DestroyObject(block.gameObject);
+	}
+
 	private IEnumerator OnClear(HashSet<Block> matches) {
 		// clear matched blocks
 		foreach (var match in matches) {
-			var dictval = blockDict[match.Position];
-			DebugUtil.Assert(dictval == match, "cleared block's location in the blockdict is wrong");
-			blockDict.Remove(match.Position);
-			DestroyObject(match.gameObject);
+			ClearBlock(match);
 		}
 		// gravity. TODO
 		// For now, just fill in the cleared blocks
