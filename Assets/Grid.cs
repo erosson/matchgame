@@ -21,6 +21,7 @@ public class Grid : MonoBehaviour {
 	// Use this for initialization
 	void Start() {
 		MatchEvent += matches => StartCoroutine(OnMatch(matches));
+		MatchEvent += matches => GA.API.Design.NewEvent("Match:NumBlocks", matches.Count);
 		ClearEvent += matches => StartCoroutine(OnClear(matches));
 
 		var blocks = new HashSet<Block>();
@@ -43,6 +44,7 @@ public class Grid : MonoBehaviour {
 			}
 		}
 		Debug.Log("iterations required for a match-free start: " + iterations);
+		GA.API.Design.NewEvent("Debug:GridMatchIterations", iterations);
 	}
 
 	private Block CreateRandomBlock(int x, int y) {

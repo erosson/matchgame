@@ -25,9 +25,9 @@ MonoBehaviour:
   UserMessagesFailed: 0
   CustomArea: 
   TrackTarget: {fileID: 0}
-  GameKey: 
-  SecretKey: 
-  ApiKey: 
+  GameKey: 79c67fa70d487df039cc2cdac98eae40
+  SecretKey: 91079618311519b4160283dc06a29f64f578ed23
+  ApiKey: 7a66ea74c3d9d435c2ee55c54c5d79335f0f5e34
   Build: 0.1
   DebugMode: 1
   DebugAddEvent: 0
@@ -42,9 +42,9 @@ MonoBehaviour:
   CustomUserID: 0
   SubmitInterval: 10
   InternetConnectivity: 0
-  CurrentInspectorState: 0
+  CurrentInspectorState: 2
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}
-  Logo: {fileID: 0}
-  UpdateIcon: {fileID: 0}
+  Logo: {fileID: 2800000, guid: 00ab0042267904964b8686dec9230a6c, type: 3}
+  UpdateIcon: {fileID: 2800000, guid: 810bbb19deed24f3cb7b854f9bafde26, type: 3}

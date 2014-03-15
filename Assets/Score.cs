@@ -13,6 +13,8 @@ public class Score : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		grid.MatchEvent += OnMatch;
+		ScoreChange += (dScore, oldScore, newScore) =>
+			GA.API.Design.NewEvent("Match:ScoreChange", dScore);
 	}
 
 	private void OnMatch(HashSet<Block> blocks) {
