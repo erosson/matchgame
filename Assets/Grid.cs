@@ -6,7 +6,7 @@ public class Grid : MonoBehaviour {
 	public int width = 10;
 	public int height = 10;
 	public int minMatch = 3;
-	public GameObject[] blockPrefabs;
+	public GameObject blockPrefab;
 	
 	public delegate void MatchEventHandler(HashSet<Block> blocks);
 	public event MatchEventHandler MatchEvent = delegate {};
@@ -36,10 +36,10 @@ public class Grid : MonoBehaviour {
 		return CreateRandomBlock(position.X, position.Y);
 	}
 	private Block CreateRandomBlock(int x, int y) {
-		var template = RandomElement(blockPrefabs);
-		var blockObject = Instantiate(template, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
+		var blockObject = Instantiate(blockPrefab, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
 		var location = IntVector2.FromVector(blockObject.transform.position);
 		var block = blockObject.GetComponent<Block>();
+		block.matchType = RandomElement(System.Enum.GetValues(typeof(Block.MatchType)) as Block.MatchType[]);
 		blockObject.transform.parent = transform;
 		block.DropEvent += OnDrop;
 		blockDict[location] = block;

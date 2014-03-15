@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Block : MonoBehaviour {
 	public enum MatchType { One, Two, Three, Four, Five, Six };
+	public Sprite[] sprites;
 	public MatchType matchType;
 	public bool IsMatchable = true;
 
@@ -22,6 +23,11 @@ public class Block : MonoBehaviour {
 	private Vector3 screenPoint;
 	private Vector3 offset;
 	private Vector3 dragStartPosition;
+
+	void Start() {
+		var ordinal = (int)matchType;
+		GetComponentInChildren<SpriteRenderer>().sprite = sprites[ordinal];
+	}
 
 	void OnMouseDown() {
 		screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
