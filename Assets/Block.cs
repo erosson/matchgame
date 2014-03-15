@@ -5,17 +5,25 @@ public class Block : MonoBehaviour {
 	public enum MatchType { One, Two, Three, Four, Five, Six };
 	public Sprite[] sprites;
 	public MatchType matchType;
-	public bool IsMatchable = true;
+	public enum State { Idle, Matching, Dragging };
+	public State state = State.Idle;
+	public bool IsMatchable {
+		get {
+			return state == State.Idle;
+		}
+	}
 
 	public delegate void DropEventHandler(Block block, IntVector2 start, IntVector2 end);
 	public event DropEventHandler DropEvent = delegate {};
 
+	private IntVector2 animatedPosition = null;
 	public IntVector2 Position {
 		get {
-			return IntVector2.FromVector(transform.position);
+			return animatedPosition != null ? animatedPosition : IntVector2.FromVector(transform.position);
 		}
 		set {
-			transform.position = new Vector3(value.X, value.Y, transform.position.z);
+			animatedPosition = value;
+			LeanTween.move(gameObject, new Vector2(value.X, value.Y), 0.3f).setOnComplete(() => animatedPosition = null);
 		}
 	}
 
@@ -30,28 +38,36 @@ public class Block : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
-		dragStartPosition = gameObject.transform.position;
+		if (state == State.Idle) {
+			state = State.Dragging;
+			screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+			offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+			dragStartPosition = gameObject.transform.position;
+		}
 	}
 	
 	void OnMouseDrag() {
-		Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-		Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
-		var diff = curPosition - dragStartPosition;
-		if (Mathf.Abs(diff.x) > Mathf.Abs (diff.y)) {
-			transform.position = new Vector3(curPosition.x, dragStartPosition.y, dragStartPosition.z);
+		if (state == State.Dragging) {
+			Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+			Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+			var diff = curPosition - dragStartPosition;
+			if (Mathf.Abs(diff.x) > Mathf.Abs (diff.y)) {
+				transform.position = new Vector3(curPosition.x, dragStartPosition.y, dragStartPosition.z);
+			}
+			else {
+				transform.position = new Vector3(dragStartPosition.x, curPosition.y, dragStartPosition.z);
+			}
+			//transform.position = curPosition;
 		}
-		else {
-			transform.position = new Vector3(dragStartPosition.x, curPosition.y, dragStartPosition.z);
-		}
-		//transform.position = curPosition;
 	}
 
 	void OnMouseUp() {
-		// Lock to grid. TODO animate this?
-		Position = IntVector2.FromVector(transform.position);
-		DropEvent(this, IntVector2.FromVector(dragStartPosition), Position);
+		if (state == State.Dragging) {
+			state = State.Idle;
+			// Lock to grid.
+			Position = IntVector2.FromVector(transform.position);
+			DropEvent(this, IntVector2.FromVector(dragStartPosition), Position);
+		}
 	}
 
 	public bool IsMatching(Block that) {

@@ -32,12 +32,11 @@ public class Grid : MonoBehaviour {
 		FindAndClearMatches(blocks);
 	}
 
-	private Block CreateRandomBlock(IntVector2 position) {
-		return CreateRandomBlock(position.X, position.Y);
-	}
 	private Block CreateRandomBlock(int x, int y) {
-		var blockObject = Instantiate(blockPrefab, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
-		var location = IntVector2.FromVector(blockObject.transform.position);
+		return CreateRandomBlock(new IntVector2(x, y));
+	}
+	private Block CreateRandomBlock(IntVector2 location) {
+		var blockObject = Instantiate(blockPrefab, new Vector3(location.X, location.Y, 0), Quaternion.identity) as GameObject;
 		var block = blockObject.GetComponent<Block>();
 		block.matchType = RandomElement(System.Enum.GetValues(typeof(Block.MatchType)) as Block.MatchType[]);
 		blockObject.transform.parent = transform;
@@ -48,7 +47,6 @@ public class Grid : MonoBehaviour {
 
 	private void OnDrop(Block block, IntVector2 start, IntVector2 end) {
 		var diff = end - start;
-		Debug.Log ("ondrop" + diff + end);
 		var starts = new HashSet<IntVector2>();
 		if (diff.X != 0) {
 			// assert diff.Y == 0;
@@ -86,9 +84,11 @@ public class Grid : MonoBehaviour {
 
 	private IEnumerator OnMatch(HashSet<Block> matches) {
 		foreach (var match in matches) {
-			Debug.Log ("triggeran");
 			match.GetComponent<Animator>().SetTrigger("Match");
-			match.IsMatchable = false;
+			DebugUtil.Assert(
+				match.state != Block.State.Dragging,
+			    "match contains the dragging block - but per the definition of IsMatchable, that's impossible!");
+			match.state = Block.State.Matching;
 		}
 		yield return new WaitForSeconds(1.0f);
 		ClearEvent(matches);
