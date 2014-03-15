@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Score : MonoBehaviour {
 	public Grid grid;
+	public ScoreToast toast;
 
 	private long score = 0;
 
@@ -21,10 +22,28 @@ public class Score : MonoBehaviour {
 		var dScore = (long) Mathf.Pow(blocks.Count - grid.minMatch + 1, 1.3f) * 100;
 		ScoreChange(dScore, score, score + dScore);
 		score += dScore;
+		CreateToast(blocks, dScore);
+	}
+
+	private void CreateToast(HashSet<Block> blocks, long score) {
+		// one-iteration loop. Any block will do. I dunno how enumerators work, lolol
+		foreach (var source in blocks) {
+			// GUIText uses viewport coordinates (0-1), other gameobjects use world coordinates. Ugh
+			Vector3 pos = Camera.main.WorldToViewportPoint(source.transform.position);
+			var inst = Instantiate(toast.gameObject, pos, Quaternion.identity) as GameObject;
+			//inst.transform.parent = grid.transform;
+			inst.SetActive(true);
+			inst.GetComponentInChildren<GUIText>().text = FormatScore(score);
+			break;
+		}
+	}
+
+	private string FormatScore(long score) {
+		return string.Format("{0:N0}", score);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		guiText.text = "Score: " + string.Format("{0:N0}", score);
+		guiText.text = "Score: " + FormatScore(score);
 	}
 }
