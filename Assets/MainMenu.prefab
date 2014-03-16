@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
+  - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: MainMenu
@@ -33,6 +34,20 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf9750778f0022b48b0313efc49af511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  select: {fileID: 8300000, guid: 0ed243bdf1f7ff149bfc2f1619b3bfbc, type: 3}
+  cancel: {fileID: 8300000, guid: 5f6e041236365454e8d1ab4f7c94dc4d, type: 3}
+  mainMenu: {fileID: 11400002}
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18be2a8ee5c1f364db4b9c2722c58943, type: 3}
@@ -40,7 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   select: {fileID: 8300000, guid: 0ed243bdf1f7ff149bfc2f1619b3bfbc, type: 3}
   cancel: {fileID: 8300000, guid: 5f6e041236365454e8d1ab4f7c94dc4d, type: 3}
-  audio_: {fileID: 0}
+  optionsMenu: {fileID: 11400000}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

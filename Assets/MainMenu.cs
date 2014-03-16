@@ -4,9 +4,7 @@ using System.Collections;
 public class MainMenu : MonoBehaviour {
 	public AudioClip select;
 	public AudioClip cancel;
-
-	public void Start() {
-	}
+	public OptionsMenu optionsMenu;
 
 	void OnGUI() {
 		DebugUtil.ScaleGUI();
@@ -46,8 +44,8 @@ public class MainMenu : MonoBehaviour {
 
 	private void Options () {
 		Music.Instance.audio.PlayOneShot(select);
-		// #28
-		throw new System.NotImplementedException ();
+		enabled = false;
+		optionsMenu.enabled = true;
 	}
 
 	private void Exit() {
