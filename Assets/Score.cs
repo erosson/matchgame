@@ -17,7 +17,7 @@ public class Score : MonoBehaviour {
 		ScoreChange += (dScore, oldScore, newScore) =>
 			GA.API.Design.NewEvent("Match:ScoreChange", dScore);
 	}
-
+	
 	private void OnMatch(HashSet<Block> blocks) {
 		var dScore = (long) Mathf.Pow(blocks.Count - grid.minMatch + 1, 1.3f) * 100;
 		ScoreChange(dScore, score, score + dScore);
