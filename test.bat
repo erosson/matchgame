@@ -1,0 +1,2 @@
+REM test batch example from UnityTestTools pdf doc
+"C:\Program Files\Unity\Editor\Unity.exe" -projectPath "%cd%" -batchmode -quit -executeMethod UnityTest.Batch.RunUnitTests -resultFilePath=Temp\results.xml
