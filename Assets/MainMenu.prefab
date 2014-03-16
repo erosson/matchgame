@@ -38,6 +38,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18be2a8ee5c1f364db4b9c2722c58943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  select: {fileID: 8300000, guid: 0ed243bdf1f7ff149bfc2f1619b3bfbc, type: 3}
+  cancel: {fileID: 8300000, guid: 5f6e041236365454e8d1ab4f7c94dc4d, type: 3}
+  audio_: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
