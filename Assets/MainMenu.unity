@@ -463,7 +463,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   select: {fileID: 8300000, guid: 0ed243bdf1f7ff149bfc2f1619b3bfbc, type: 3}
   cancel: {fileID: 8300000, guid: 5f6e041236365454e8d1ab4f7c94dc4d, type: 3}
-  extAudio: {fileID: 1327802197}
 --- !u!4 &1452858673
 Transform:
   m_ObjectHideFlags: 0
