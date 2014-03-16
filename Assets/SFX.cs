@@ -14,6 +14,9 @@ public class SFX : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		// TODO if we add a volume control to the pause screen, this breaks
+		audio.volume = Music.Instance.audio.volume;
+
 		DebugUtil.Assert(combos.Length == comboThresholds.Length);
 		for (int i=0; i < comboThresholds.Length - 1; i++) {
 			DebugUtil.Assert(comboThresholds[i] < comboThresholds[i + 1]);

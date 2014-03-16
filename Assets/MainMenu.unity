@@ -256,7 +256,7 @@ GameObject:
   - 82: {fileID: 1327802197}
   - 114: {fileID: 1327802199}
   m_Layer: 0
-  m_Name: Music
+  m_Name: MusicSFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,6 +378,10 @@ Prefab:
     - target: {fileID: 400000, guid: 334038e0e4fc2ba42a262fd211da9231, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 334038e0e4fc2ba42a262fd211da9231, type: 2}
+      propertyPath: m_Name
+      value: MusicSFX
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 334038e0e4fc2ba42a262fd211da9231, type: 2}

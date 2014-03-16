@@ -220,7 +220,7 @@ GameObject:
   - 82: {fileID: 278786714}
   - 114: {fileID: 278786713}
   m_Layer: 0
-  m_Name: MusicSingleton
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -952,7 +952,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 334038e0e4fc2ba42a262fd211da9231, type: 2}
       propertyPath: m_Name
-      value: MusicSingleton
+      value: Music
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 334038e0e4fc2ba42a262fd211da9231, type: 2}

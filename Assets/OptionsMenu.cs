@@ -11,7 +11,7 @@ public class OptionsMenu : MonoBehaviour {
 		
 		GUILayout.BeginArea(new Rect(DebugUtil.ScreenWidth/4, DebugUtil.ScreenHeight/2, DebugUtil.ScreenWidth/2, DebugUtil.ScreenHeight/2));
 		GUILayout.BeginHorizontal();
-		GUILayout.Label ("Music Volume");
+		GUILayout.Label ("Sound Volume");
 		Music.Instance.audio.volume = GUILayout.HorizontalSlider(Music.Instance.audio.volume, 0, 1);
 		GUILayout.EndHorizontal();
 /*		GUILayout.BeginHorizontal();
