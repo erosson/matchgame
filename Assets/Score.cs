@@ -6,7 +6,12 @@ public class Score : MonoBehaviour {
 	public Grid grid;
 	public ScoreToast toast;
 
-	private long score = 0;
+	private long _score = 0;
+	public long score {
+		get {
+			return _score;
+		}
+	}
 
 	public delegate void ScoreChangeHandler(long dScore, long oldScore, long newScore);
 	public event ScoreChangeHandler ScoreChange = delegate {};
@@ -21,7 +26,7 @@ public class Score : MonoBehaviour {
 	private void OnMatch(HashSet<Block> blocks) {
 		var dScore = (long) Mathf.Pow(blocks.Count - grid.minMatch + 1, 1.3f) * 100;
 		ScoreChange(dScore, score, score + dScore);
-		score += dScore;
+		_score += dScore;
 		CreateToast(blocks, dScore);
 	}
 

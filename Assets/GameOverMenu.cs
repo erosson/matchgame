@@ -10,13 +10,13 @@ public class GameOverMenu : MonoBehaviour {
 	void Start() {
 		// by default, this.data is dummy data so we can easily test this scene,
 		// but usually it's passed as a "parameter" with DontDestroyObjectOnLoad
-		//var data = FindObjectOfType<GameOverData>();
-		if (data == null) {
-			data = new GameOverData();
-			data.score = 9999;
+		var obj = GameObject.Find("/GameOverMenuParam");
+		if (obj == null) {
+			data = new GameOverData(9999);
 		}
 		else {
-			//DestroyObject(data.gameObject);
+			data = obj.GetComponent<SceneParameter>().value as GameOverData;
+			DestroyObject(obj);
 		}
 	}
 	

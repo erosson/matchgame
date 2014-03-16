@@ -5,13 +5,13 @@ public class Timer : MonoBehaviour {
 	public AudioClip gameOver;
 	public delegate void TimeOverEvent();
 	public event TimeOverEvent TimeOver = delegate {};
+	public Score score;
+	public SceneParameter gameOverMenuParam;
 
 	public int timelimitSeconds = 180;
 
 	void Start() {
-		TimeOver += () => Debug.Log ("timeover!");
-		TimeOver += () => Music.Instance.audio.PlayOneShot(gameOver);
-		TimeOver += () => Application.LoadLevel("GameOverMenu");
+		TimeOver += OnTimeOver;
 
 		StartCoroutine(Countdown(new System.TimeSpan(0, 0, timelimitSeconds)));
 	}
@@ -26,6 +26,14 @@ public class Timer : MonoBehaviour {
 			Display(remaining);
 		}
 		TimeOver();
+	}
+
+	private void OnTimeOver() {
+		Debug.Log("timeover!");
+		Music.Instance.audio.PlayOneShot(gameOver);
+		gameOverMenuParam.value = new GameOverData(score.score);
+		DontDestroyOnLoad(gameOverMenuParam);
+		Application.LoadLevel("GameOverMenu");
 	}
 
 	private void Display(System.TimeSpan remaining) {
