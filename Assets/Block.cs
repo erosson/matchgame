@@ -27,7 +27,15 @@ public class Block : MonoBehaviour {
 		}
 		set {
 			animatedPosition = value;
-			LeanTween.move(gameObject, new Vector2(value.X, value.Y), 0.3f).setOnComplete(() => animatedPosition = null);
+			LeanTween.move(gameObject, new Vector2(value.X, value.Y), 0.3f).setOnComplete(() => {
+				animatedPosition = null;
+			});
+		}
+	}
+
+	private bool IsAnimating {
+		get {
+			return animatedPosition != null;
 		}
 	}
 
@@ -42,7 +50,7 @@ public class Block : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		if (state == State.Idle && !pause.IsPaused) {
+		if (state == State.Idle && !IsAnimating && !pause.IsPaused) {
 			state = State.Dragging;
 			screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 			offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
