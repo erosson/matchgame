@@ -15,11 +15,11 @@ public class MainMenu : MonoBehaviour {
 		if (GUILayout.Button("Play")) {
 			Play();
 		}
-		if (GUILayout.Button("Feedback")) {
-			Feedback();
-		}
 		if (GUILayout.Button("Options")) {
 			Options();
+		}
+		if (GUILayout.Button("Feedback")) {
+			Feedback();
 		}
 		if (GUILayout.Button("Exit")) {
 			Exit();
@@ -41,8 +41,7 @@ public class MainMenu : MonoBehaviour {
 
 	private void Feedback () {
 		Music.Instance.audio.PlayOneShot(select);
-		Application.OpenURL("http://www.google.com");
-		throw new System.NotImplementedException ();
+		Application.OpenURL("https://docs.google.com/a/erosson.org/forms/d/12V9Vz-lRQvMuMg91p_AEgeOHcjgDxPt399t_MIHFVig/viewform");
 	}
 
 	private void Options () {
