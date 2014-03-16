@@ -6,7 +6,8 @@ public class PauseMenu : MonoBehaviour {
 	public AudioClip cancel;
 
 	void OnGUI() {
-		GUILayout.BeginArea(new Rect(Screen.width/4, Screen.height/2, Screen.width/2, Screen.height/2));
+		DebugUtil.ScaleGUI();
+		GUILayout.BeginArea(new Rect(DebugUtil.ScreenWidth/4, DebugUtil.ScreenHeight/2, DebugUtil.ScreenWidth/2, DebugUtil.ScreenHeight/2));
 		GUILayout.Label("Paused");
 		if (GUILayout.Button("Resume")) {
 			Resume();
