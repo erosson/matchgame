@@ -907,6 +907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e76e657d9a95d4ca2012c804178048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: {fileID: 8300000, guid: 477262ea8c80d09429ff6db277f137ca, type: 3}
   timelimitSeconds: 5
 --- !u!1001 &1570114524
 Prefab:

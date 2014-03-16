@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Timer : MonoBehaviour {
+	public AudioClip gameOver;
 	public delegate void TimeOverEvent();
 	public event TimeOverEvent TimeOver = delegate {};
 
@@ -9,6 +10,8 @@ public class Timer : MonoBehaviour {
 
 	void Start() {
 		TimeOver += () => Debug.Log ("timeover!");
+		TimeOver += () => Music.Instance.audio.PlayOneShot(gameOver);
+		TimeOver += () => Application.LoadLevel("GameOverMenu");
 
 		StartCoroutine(Countdown(new System.TimeSpan(0, 0, timelimitSeconds)));
 	}
