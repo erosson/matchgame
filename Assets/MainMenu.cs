@@ -19,8 +19,11 @@ public class MainMenu : MonoBehaviour {
 		if (GUILayout.Button("Feedback")) {
 			Feedback();
 		}
-		if (GUILayout.Button("Exit")) {
-			Exit();
+		// Exit button does nothing in the web player
+		if (!Application.isWebPlayer && !Application.isEditor) {
+			if (GUILayout.Button("Exit")) {
+				Exit();
+			}
 		}
 		GUILayout.EndArea();
 	}
