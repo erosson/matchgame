@@ -102,6 +102,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3365547dde1cf4e4a917d77ab9df01ff, type: 3}
   matchType: 0
   state: 0
+  pause: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

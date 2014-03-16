@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class PauseMenu : MonoBehaviour {
+	public AudioClip select;
+	public AudioClip cancel;
+
 	void OnGUI() {
 		GUILayout.BeginArea(new Rect(Screen.width/4, Screen.height/2, Screen.width/2, Screen.height/2));
 		GUILayout.Label("Paused");
@@ -16,18 +19,25 @@ public class PauseMenu : MonoBehaviour {
 		}
 		GUILayout.EndArea();
 	}
+
+	public void OnEnable() {
+		Music.Instance.audio.PlayOneShot(select);
+	}
 	
 	private void Resume() {
+		Music.Instance.audio.PlayOneShot(select);
 		Time.timeScale = 1;
 		enabled = false;
 	}
 	
 	private void RestartLevel() {
+		Music.Instance.audio.PlayOneShot(select);
 		Time.timeScale = 1;
 		Application.LoadLevel(Application.loadedLevelName);
 	}
 
 	private void QuitToTitle() {
+		Music.Instance.audio.PlayOneShot(cancel);
 		Time.timeScale = 1;
 		Application.LoadLevel("MainMenu");
 	}

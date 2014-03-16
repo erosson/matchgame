@@ -7,6 +7,7 @@ public class Block : MonoBehaviour {
 	public MatchType matchType;
 	public enum State { Idle, Matching, Dragging };
 	public State state = State.Idle;
+	public PauseListener pause;
 	public bool IsMatchable {
 		get {
 			return state == State.Idle;
@@ -41,7 +42,7 @@ public class Block : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		if (state == State.Idle) {
+		if (state == State.Idle && !pause.IsPaused) {
 			state = State.Dragging;
 			screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 			offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));

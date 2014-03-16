@@ -8,8 +8,14 @@ public class PauseListener : MonoBehaviour {
 		}
 	}
 
+	public bool IsPaused {
+		get {
+			return pauseMenu.enabled;
+		}
+	}
+
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Escape) && !pauseMenu.enabled) {
+		if (Input.GetKeyDown(KeyCode.Escape) && !IsPaused) {
 			Pause();
 		}
 	}
