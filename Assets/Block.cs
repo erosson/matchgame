@@ -15,7 +15,10 @@ public class Block : MonoBehaviour {
 
 	public delegate void DropEventHandler(Block block, IntVector2 start, IntVector2 end);
 	public event DropEventHandler DropEvent = delegate {};
-
+	
+	public delegate void GrabEventHandler(Block block);
+	public event GrabEventHandler GrabEvent = delegate {};
+	
 	private IntVector2 animatedPosition = null;
 	public IntVector2 Position {
 		get {
@@ -43,6 +46,7 @@ public class Block : MonoBehaviour {
 			screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 			offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
 			dragStartPosition = gameObject.transform.position;
+			GrabEvent(this);
 		}
 	}
 	

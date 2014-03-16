@@ -11,7 +11,9 @@ public class Grid : MonoBehaviour {
 	public delegate void MatchEventHandler(HashSet<Block> blocks);
 	public event MatchEventHandler MatchEvent = delegate {};
 	public event MatchEventHandler ClearEvent = delegate {};
-	
+	public event Block.GrabEventHandler GrabEvent = delegate {};
+	public event Block.DropEventHandler DropEvent = delegate {};
+
 	private Dictionary<IntVector2, Block> blockDict = new Dictionary<IntVector2, Block>();
 
 	private T RandomElement<T>(T[] elements) {
@@ -56,11 +58,18 @@ public class Grid : MonoBehaviour {
 		block.matchType = RandomElement(System.Enum.GetValues(typeof(Block.MatchType)) as Block.MatchType[]);
 		blockObject.transform.parent = transform;
 		block.DropEvent += OnDrop;
+		block.GrabEvent += OnGrab;
 		blockDict[location] = block;
 		return block;
 	}
 
+	private void OnGrab(Block block) {
+		GrabEvent(block);
+	}
+
 	private void OnDrop(Block block, IntVector2 start, IntVector2 end) {
+		DropEvent(block, start, end);
+
 		var diff = end - start;
 		var starts = new HashSet<IntVector2>();
 		if (diff.X != 0) {
