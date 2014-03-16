@@ -3,7 +3,6 @@ using System.Collections;
 
 public class MainMenu : MonoBehaviour {
 	void OnGUI() {
-		Debug.Log ("guilol");
 		GUILayout.BeginArea(new Rect(Screen.width/4, Screen.height/2, Screen.width/2, Screen.height/2));
 		if (GUILayout.Button("Play")) {
 			Play();
@@ -12,6 +11,12 @@ public class MainMenu : MonoBehaviour {
 			Exit();
 		}
 		GUILayout.EndArea();
+	}
+
+	void Update () {
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			Exit();
+		}
 	}
 
 	private void Play () {
