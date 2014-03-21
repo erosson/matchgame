@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour {
 	public AudioClip cancel;
 	public OptionsMenu optionsMenu;
 
-	private string url = "http://orbitris.zealgame.com";
+	private string url = "http://erosson.org/games/orbitris";
 
 	void OnGUI() {
 		DebugUtil.ScaleGUI();
@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour {
 		if (GUILayout.Button("Feedback")) {
 			Feedback();
 		}
-		if (GUILayout.Button(url)) {
+		if (GUILayout.Button("Website")) {
 			Web();
 		}
 		// Exit button does nothing in the web player
