@@ -16,4 +16,5 @@ for dir in win mac linux32 linux64; do
     cd -
 done
 
+git rev-parse HEAD > sh-hash
 rsync -auv --delete . deploy --exclude "deploy/" --exclude "*/orbitris/" --exclude "mac/orbitris.app/" 

@@ -19,4 +19,6 @@ mkdir build\linux64\%NAME%
 %UNITY_BAT% -buildOSXPlayer build\mac\%NAME%.app .
 %UNITY_BAT% -buildLinux32Player build\linux32\%NAME%\%NAME% .
 %UNITY_BAT% -buildLinux64Player build\linux64\%NAME%\%NAME% .
+git rev-parse HEAD > build\bat-hash
+REM because DOS coding sucks
 echo "Windows build done. Now run build.sh from linux."
