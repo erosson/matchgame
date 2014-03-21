@@ -15,3 +15,5 @@ for dir in win mac linux32 linux64; do
     zip -r $name.zip $name*
     cd -
 done
+
+rsync -auv --delete . deploy --exclude "deploy/" --exclude "*/orbitris/" --exclude "mac/orbitris.app/" 
